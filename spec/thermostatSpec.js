@@ -26,4 +26,12 @@ describe("Thermostat", function() {
     }
     expect(tempTooLow).toThrowError("Temperature too low!")
   })
+
+  it('Should not be able to exceed the maximum temperature', function() {
+    thermostat.turnUp(5);
+    var tempTooHigh = function() {
+      thermostat.turnUp(1);
+    };
+    expect(tempTooHigh).toThrowError('Power save mode is on, maximum temp is 25!');
+  })
 })
