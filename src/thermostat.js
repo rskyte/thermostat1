@@ -49,5 +49,5 @@ Thermostat.prototype.energyUsage = function() {
     return 'Medium-usage';
   } else {
     return 'High-usage';
-  };
+  }; 
 }
