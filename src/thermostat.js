@@ -22,3 +22,18 @@ Thermostat.prototype.turnDown = function(x) {
   }
   this.temp -= x;
 }
+
+Thermostat.prototype.adjustMaxTemp = function() {
+  this.maxTemp = (this.maxTemp === POWER_SAVE_MAX_TEMP ?
+    STANDARD_MAX_TEMP : POWER_SAVE_MAX_TEMP)
+}
+
+Thermostat.prototype.powerSaveOff = function() {
+  this.isPowerSaveOn = false
+  this.adjustMaxTemp()
+}
+
+Thermostat.prototype.powerSaveOn = function() {
+  this.isPowerSaveOn = true
+  this.adjustMaxTemp()
+}

@@ -6,7 +6,7 @@ describe("Thermostat", function() {
   })
 
   it("should default to 20 degrees", function() {
-    expect(thermostat.temp).toEqual(20)
+    expect(thermostat.temp).toEqual(DEFAULT_TEMPERATURE)
   })
 
   it("should increase temp by desired amount when called upon", function() {
@@ -33,5 +33,19 @@ describe("Thermostat", function() {
       thermostat.turnUp(1);
     };
     expect(tempTooHigh).toThrowError('Power save mode is on, maximum temp is 25!');
+  })
+
+  it("max temp is adjusted by turning power save mode off", function() {
+    thermostat.powerSaveOff()
+    expect(thermostat.maxTemp).toEqual(STANDARD_MAX_TEMP)
+  })
+
+  it("max temp is adjusted by turning power save mode on", function() {
+    console.log(thermostat.maxTemp)
+    thermostat.powerSaveOff()
+    console.log(thermostat.maxTemp)
+    thermostat.powerSaveOn()
+    console.log(thermostat.maxTemp)
+    expect(thermostat.maxTemp).toEqual(POWER_SAVE_MAX_TEMP)
   })
 })
