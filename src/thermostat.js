@@ -7,3 +7,6 @@ function Thermostat() {
 Thermostat.prototype.turnUp = function(x) {
   this.temp += x;
 }
+Thermostat.prototype.turnDown = function(x) {
+  this.temp -= x;
+}

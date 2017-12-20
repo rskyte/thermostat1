@@ -13,4 +13,9 @@ describe("Thermostat", function() {
     thermostat.turnUp(5);
     expect(thermostat.temp).toEqual(25);
   });
+
+  it("should decrease temp by desired amount when called upon", function() {
+    thermostat.turnDown(5);
+    expect(thermostat.temp).toEqual(15);
+  });
 })
