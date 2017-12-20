@@ -18,4 +18,12 @@ describe("Thermostat", function() {
     thermostat.turnDown(5);
     expect(thermostat.temp).toEqual(15);
   });
+
+  it("should not go below the minimum temperature", function() {
+    thermostat.turnDown(10)
+    var tempTooLow = function() {
+      thermostat.turnDown(1);
+    }
+    expect(tempTooLow).toThrowError("Temperature too low!")
+  })
 })
